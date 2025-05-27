@@ -34,5 +34,12 @@ public class EntidadService {
         entidadRepository.deleteById(id);
     }
 
+    public EntidadDTO updateEntidad(Long id, EntidadDTO entidadDTO) {
+        if (entidadRepository.existsById(id)) {
+            entidadDTO.setId(id);
+            return saveEntidad(entidadDTO);
+        }
+        return null; // or throw an exception
+    }
     
 }

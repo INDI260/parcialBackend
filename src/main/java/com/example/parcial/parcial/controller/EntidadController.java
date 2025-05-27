@@ -36,4 +36,19 @@ public class EntidadController {
         entidadDTO.setNombre(nombre);
         return entidadService.saveEntidad(entidadDTO);
     }
+
+    @GetMapping("/delete/{id}")
+    public void delete(@PathVariable Long id) {
+        entidadService.deleteEntidad(id);
+    }
+
+    @GetMapping("/update/{id}")
+    public EntidadDTO update(@PathVariable Long id, @RequestParam String nit, @RequestParam String nombre) {
+        EntidadDTO entidadDTO = new EntidadDTO();
+        entidadDTO.setId(id);
+        entidadDTO.setNit(nit);
+        entidadDTO.setNombre(nombre);
+        return entidadService.updateEntidad(id, entidadDTO);
+    }
+    
 }
